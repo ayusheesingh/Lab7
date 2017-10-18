@@ -44,7 +44,7 @@ public class Colosseum {
      * <p>
      * Requirements we should check the user for: <br>
      * - Hit points are between 1 and MAX_HIT_POINTS <br>
-     * - No more than 50 points are split between attack level and defense leve <br>
+     * - No more than 50 points are split between attack level and defense level <br>
      * - Attack level and defense level must have at least 1 point each <br>
      * Example of how this will look to the user:
      * <p>
@@ -74,6 +74,11 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        if (1 >= tempPokemon.hitPoints && tempPokemon.hitPoints >= MAX_HIT_POINTS) {
+            System.out.println("Sorry. Hit points must be between 1 and 50: "
+                    + tempPokemon.hitPoints);
+        }
+
         return tempPokemon;
     }
 
@@ -91,6 +96,11 @@ public class Colosseum {
      * Implement this function.
      */
     public static void printWhoIsAhead() {
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon + " is currently ahead!");
+        } else {
+            System.out.println(secondPokemon + " is currently ahead!");
+        }
         System.out.println("Implement me!");
     }
 
@@ -102,6 +112,11 @@ public class Colosseum {
      * Write this function.
      */
     public static void determineWinner() {
+        if (firstPokemon.hitPoints < 1) {
+            System.out.println("secondPokemon won!");
+        } else {
+            System.out.println("firstPokemon won!");
+        }
         System.out.println("Implement me!");
     }
 
@@ -142,9 +157,7 @@ public class Colosseum {
         if (firstTurn == 1) {
             System.out.print("first");
         } else {
-            /*
-             * Swap Pokemon for second outcome.
-             */
+            System.out.print("second");
             System.out.print("second");
             Pokemon tempPokemon = new Pokemon();
             tempPokemon = firstPokemon;
